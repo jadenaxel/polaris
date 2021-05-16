@@ -31,11 +31,7 @@ export default class Expo {
 					console.log(`${data}`);
 				});
 				install.on('close', async () => {
-					try {
-						await Deno.remove(`${this.currentDir}/${tempFile}`);
-					} catch {
-						null;
-					}
+					await Deno.remove(`${this.currentDir}/${tempFile}`);
 				});
 			}
 		} catch (error) {

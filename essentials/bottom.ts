@@ -5,5 +5,4 @@ exec(\`yarn add @react-navigation/native @react-navigation/stack react-native-re
 	if (a) console.log("Modules can't be installed.");
 	console.log("Modules installed.");
 })
-
 `;
