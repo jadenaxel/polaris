@@ -2,7 +2,7 @@
 
 import { fs, spawn } from './deps.ts';
 import tempFile from './helpers/name.ts';
-import execE from './expo_exec.ts';
+import execE from './essentials/expo_exec.ts';
 
 export default class Expo {
 	protected currentDir: string = Deno.cwd();
@@ -24,14 +24,18 @@ export default class Expo {
 				await Deno.writeTextFile(`${this.currentDir}/${tempFile}`, this.execE);
 				console.log('Creating the project.');
 				const install: any = spawn('node', [`${tempFile}`]);
-				install.stdout.on('data', (data: any) => {
+				install.stdout.on('data', (data: string) => {
 					console.log(`${data}`);
 				});
-				install.stderr.on('data', (data: any) => {
+				install.stderr.on('data', (data: string) => {
 					console.log(`${data}`);
 				});
-				install.on('close', async (data: any) => {
-					await Deno.remove(`${this.currentDir}/${tempFile}`);
+				install.on('close', async () => {
+					try {
+						await Deno.remove(`${this.currentDir}/${tempFile}`);
+					} catch {
+						null;
+					}
 				});
 			}
 		} catch (error) {
