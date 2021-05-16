@@ -1,7 +1,7 @@
 /** @format */
 import { fs, spawn } from '../../deps.ts';
 import { App, Bottom, Tab } from '../../essentials/mod.ts';
-import tempFile from '../../name.ts';
+import tempFile from '../../helpers/name.ts';
 
 const path: string = Deno.cwd();
 

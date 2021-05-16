@@ -1,14 +1,16 @@
 /** @format */
 
-const names = 'abcdefghijklmnopqrstuvwxyz';
+const names = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
 let getName = '';
-let i;
 
-for (i of names) {
+for (let i = 0; i <= 10; i++) {
 	const news = Math.floor(Math.random() * names.length);
 	getName += names[news];
 }
 
 const finalName = `${getName}.js`;
+
+console.log(finalName);
+
 export default finalName;

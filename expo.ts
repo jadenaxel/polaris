@@ -1,7 +1,7 @@
 /** @format */
 
 import { fs, spawn } from './deps.ts';
-import tempFile from './name.ts';
+import tempFile from './helpers/name.ts';
 import execE from './expo_exec.ts';
 
 export default class Expo {
