@@ -33,16 +33,16 @@ const main = async () => {
 					await Deno.writeTextFile(`${path}/${tempFile}`, Bottom);
 					const dependencies: any = spawn('node', [`${tempFile}`]);
 					console.log('Installing Modules');
-					dependencies.stdout.on('data', (data: any) => {
+					dependencies.stdout.on('data', (data: string) => {
 						console.log(`${data}`);
 						createFolder('screen', 'interface', 'constants', 'navigation');
 						spawn('econfig');
 						spawn('pretty');
 					});
-					dependencies.stderr.on('data', (data: any) => {
+					dependencies.stderr.on('data', (data: string) => {
 						console.log(`${data}`);
 					});
-					dependencies.on('close', async (data: any) => {
+					dependencies.on('close', async () => {
 						await Deno.remove(`${path}/${tempFile}`);
 					});
 				} else {

@@ -11,6 +11,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from "@react-navigation/stack";
 
 ${isMaterial}
+import { } from "./screen";
 
 const App: FC = (): JSX.Element => {
 	const { Navigator, Screen } = createStackNavigator();
@@ -24,8 +25,7 @@ const App: FC = (): JSX.Element => {
 	)
 }
 
-export default App;
-`;
+export default App;`;
 };
 
 export default main;
