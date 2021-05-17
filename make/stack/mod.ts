@@ -1,9 +1,24 @@
 /** @format */
 import { fs, spawn } from '../../deps.ts';
-import { App, Stack } from '../../essentials/mod.ts';
-import tempFile from '../../helpers/name.ts';
+import { App } from '../../essentials/mod.ts';
 
 const path: string = Deno.cwd();
+
+const modules: string[] = [
+	'/d',
+	'/s',
+	'/c',
+	'yarn',
+	'add',
+	'@react-navigation/native',
+	'@react-navigation/stack',
+	'react-native-reanimated',
+	'react-native-gesture-handler',
+	'react-native-screens',
+	'react-native-safe-area-context',
+	'@react-native-community/masked-view',
+	'@expo/vector-icons',
+];
 
 const createFolder = async (...args: string[]) => {
 	let folders: string;
@@ -13,7 +28,7 @@ const createFolder = async (...args: string[]) => {
 			await Deno.writeTextFile(`${path}/${folders}/index.ts`, '');
 		}
 		console.log('Folders created.');
-	} catch (error) {
+	} catch {
 		console.log("Folders Can't be created.");
 	}
 };
@@ -24,21 +39,11 @@ const main = async () => {
 			if (fs.existsSync(`${path}/App.tsx`)) {
 				const AppFile: string = await Deno.readTextFile(`${path}/App.tsx`);
 				if (AppFile.includes("import 'react-native-gesture-handler'")) {
-					await Deno.writeTextFile(`${path}/${tempFile}`, Stack);
-					const dependencies: any = spawn('node', [`${tempFile}`]);
 					console.log('Installing Modules');
-					dependencies.stdout.on('data', (data: string) => {
-						console.log(`${data}`);
-						createFolder('screen', 'interface', 'constants');
-						spawn('econfig');
-						spawn('pretty');
-					});
-					dependencies.stderr.on('data', (data: string) => {
-						console.log(`${data}`);
-					});
-					dependencies.on('close', async () => {
-						await Deno.remove(`${path}/${tempFile}`);
-					});
+					spawn('cmd', modules);
+					createFolder('screen', 'interface', 'constants');
+					spawn('econfig');
+					spawn('pretty');
 				} else {
 					await Deno.writeTextFile(`${path}/App.tsx`, App(false));
 					main();
