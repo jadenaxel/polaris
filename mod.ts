@@ -1,6 +1,7 @@
 /** @format */
 import Expo from './expo.ts';
 import make from './make/mod.ts';
+import helps from './help/mod.ts';
 
 const main = (params: string[]): void => {
 	const commandNew: string = params[0];
@@ -15,7 +16,7 @@ const main = (params: string[]): void => {
 			} else if (commandNew.toLowerCase().includes('make')) {
 				make(commandNew.toLowerCase(), params[1]);
 			} else if (commandNew.toLowerCase() === '--help' || commandNew.toLowerCase() === '-h') {
-				// helps();
+				helps();
 			} else console.log('Use --help or -h to see the list of commands.');
 		} else console.log('Use --help or -h to see the list of commands.');
 	} catch (error) {
