@@ -1,24 +1,9 @@
 /** @format */
 import { fs, spawn } from '../../deps.ts';
 import { App } from '../../essentials/mod.ts';
+import { cExecStackNavigator } from '../../global/index.ts';
 
 const path: string = Deno.cwd();
-
-const modules: string[] = [
-	'/d',
-	'/s',
-	'/c',
-	'yarn',
-	'add',
-	'@react-navigation/native',
-	'@react-navigation/stack',
-	'react-native-reanimated',
-	'react-native-gesture-handler',
-	'react-native-screens',
-	'react-native-safe-area-context',
-	'@react-native-community/masked-view',
-	'@expo/vector-icons',
-];
 
 const createFolder = async (...args: string[]) => {
 	let folders: string;
@@ -40,7 +25,7 @@ const main = async () => {
 				const AppFile: string = await Deno.readTextFile(`${path}/App.tsx`);
 				if (AppFile.includes("import 'react-native-gesture-handler'")) {
 					console.log('Installing Modules');
-					spawn('cmd', modules);
+					spawn('cmd', cExecStackNavigator);
 					createFolder('screen', 'interface', 'constants');
 					spawn('econfig');
 					spawn('pretty');

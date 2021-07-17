@@ -1,26 +1,9 @@
 /** @format */
 import { fs, spawn } from '../../deps.ts';
 import { App, Tab } from '../../essentials/mod.ts';
+import { cExecMaterialNavigator } from '../../global/index.ts';
 
 const path: string = Deno.cwd();
-
-const modules: string[] = [
-	'/d',
-	'/s',
-	'/c',
-	'yarn',
-	'add',
-	'@react-navigation/native',
-	'@react-navigation/stack',
-	'react-native-reanimated',
-	'react-native-gesture-handler',
-	'react-native-screens',
-	'react-native-safe-area-context',
-	'@react-native-community/masked-view',
-	'@expo/vector-icons',
-	'@react-navigation/material-bottom-tabs',
-	'react-native-paper',
-];
 
 const createFolder = async (...args: string[]) => {
 	let folders: string;
@@ -47,7 +30,7 @@ const main = async () => {
 			if (fs.existsSync(`${path}/App.tsx`)) {
 				const AppFile: string = await Deno.readTextFile(`${path}/App.tsx`);
 				if (AppFile.includes("import { Tab } from './navigation'")) {
-					spawn('cmd', modules);
+					spawn('cmd', cExecMaterialNavigator);
 					console.log('Installing Modules');
 					createFolder('screen', 'interface', 'constants', 'navigation');
 					spawn('econfig');
