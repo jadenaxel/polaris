@@ -10,15 +10,19 @@ export default defineType({
 			title: 'Nombre',
 			type: 'string',
 		}),
-		defineField({
-			name: 'img',
+		{
 			title: 'Imagen',
-			type: 'string',
-		}),
-		defineField({
-			name: 'pdf',
+			name: 'image',
+			type: 'image',
+			options: {
+				metadata: ['location', 'palette'],
+				hotspot: true,
+			},
+		},
+		{
 			title: 'PDF',
-			type: 'string',
-		}),
+			name: 'pdf',
+			type: 'file',
+		},
 	],
 })

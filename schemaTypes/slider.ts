@@ -1,15 +1,10 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-	name: 'libro',
-	title: 'Libros',
+	name: 'slider',
+	title: 'Slider',
 	type: 'document',
 	fields: [
-		defineField({
-			name: 'title',
-			title: 'Nombre',
-			type: 'string',
-		}),
 		{
 			title: 'Imagen',
 			name: 'image',
@@ -19,10 +14,10 @@ export default defineType({
 				hotspot: true,
 			},
 		},
-		{
-			title: 'PDF',
-			name: 'pdf',
-			type: 'file',
-		},
+		defineField({
+			name: 'url',
+			title: 'URL',
+			type: 'string',
+		}),
 	],
 })

@@ -10,21 +10,25 @@ export default defineType({
 			title: 'Nombre',
 			type: 'string',
 		}),
-		defineField({
-			name: 'image',
+		{
 			title: 'Imagen',
-			type: 'string',
-		}),
-		defineField({
-			name: 'pdf1',
+			name: 'image',
+			type: 'image',
+			options: {
+				metadata: ['location', 'palette'],
+				hotspot: true,
+			},
+		},
+		{
 			title: 'PDF Desarrolladas',
-			type: 'string',
-		}),
-		defineField({
-			name: 'pdf2',
+			name: 'pdf1',
+			type: 'file',
+		},
+		{
 			title: 'PDF Requisitos',
-			type: 'string',
-		}),
+			name: 'pdf2',
+			type: 'file',
+		},
 		defineField({
 			name: 'category',
 			title: 'Categorias',

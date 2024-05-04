@@ -10,11 +10,15 @@ export default defineType({
 			title: 'Nombre',
 			type: 'string',
 		}),
-		defineField({
-			name: 'img',
+		{
 			title: 'Imagen',
-			type: 'string',
-		}),
+			name: 'image',
+			type: 'image',
+			options: {
+				metadata: ['location', 'palette'],
+				hotspot: true,
+			},
+		},
 		defineField({
 			name: 'url',
 			title: 'URL',
