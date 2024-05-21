@@ -24,10 +24,5 @@ export default defineType({
 			title: 'URL',
 			type: 'string',
 		}),
-		defineField({
-			name: 'desc',
-			title: 'Descripcion',
-			type: 'text',
-		}),
 	],
 })
